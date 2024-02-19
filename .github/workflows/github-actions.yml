@@ -12,6 +12,10 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Checkout code
+        uses: ../Dockerfile
+        with:
+          node-version: "20.x"
       - name: install
         uses: npm install
 
