@@ -1,0 +1,19 @@
+name: driblle_clone
+run-name: Dribble Clone
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: install
+        uses: npm install
+
+      - name: build
+        run: npm run build
