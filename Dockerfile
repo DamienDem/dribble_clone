@@ -11,7 +11,7 @@ WORKDIR /dribble_clone/app
 COPY --from=builder /dribble_clone/app/package.json .
 COPY --from=builder /dribble_clone/app/package-lock.json .
 COPY --from=builder /dribble_clone/app/next.config.mjs ./
-COPY --from=builder /dribble_clone/app/public ./public
+COPY --from=builder /dribble_clone/app/.next/standalone ./
 COPY --from=builder /dribble_clone/app/.next/static ./.next/static
 EXPOSE 3000
-ENTRYPOINT ["npm", "start"]
+CMD ["node", "server.js"]
