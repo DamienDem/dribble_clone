@@ -1,4 +1,4 @@
-name: driblle_clone
+name: dribble_clone
 run-name: Dribble Clone
 on:
   push:
@@ -12,12 +12,8 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code
-        uses: ../Dockerfile
-        with:
-          node-version: "20.x"
-      - name: install
-        uses: npm install
+      - uses: actions/checkout@v3
+      - name: Build docker image
+        run: docker build . --file Dockerfile --tag dribble_clone
 
-      - name: build
-        run: npm run build
+    
