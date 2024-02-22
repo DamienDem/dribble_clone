@@ -1,0 +1,9 @@
+version: '3'
+
+services:
+  app:
+    image: "damiendem/dribble_clone"
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./static:/app/static
