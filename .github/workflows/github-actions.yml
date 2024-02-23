@@ -48,13 +48,23 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     needs: test
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
+        with:
+          ref: main
+
       - name: Install SSH key
         uses: webfactory/ssh-agent@v0.9.0
         with:
           ssh-private-key: ${{ secrets.SSH_KEY }}
-      - name: SSH deploy
+
+      - name: Connect to VPS and deploy
         run: |
-          ssh -o StrictHostKeyChecking=no ${{ secrets.USERNAME }} "cd /root && docker-compose up"
+          ssh -o StrictHostKeyChecking=no ${{ secrets.USERNAME }} << EOF
+          git pull
+          cd dribble_clone
+          docker-compose up -d
+          EOF
+        
