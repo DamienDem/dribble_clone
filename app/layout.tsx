@@ -1,4 +1,5 @@
 import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
 import "./globals.css";
 export const metadata = {
   title: "dribble_clone",
@@ -15,7 +16,7 @@ export default function RootLayout({
       <body>
         <Navbar />
         <main>{children}</main>
-        <footer>Footer</footer>
+        <Footer />
       </body>
     </html>
   );
