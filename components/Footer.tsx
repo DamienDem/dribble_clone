@@ -1,5 +1,17 @@
-const Footer = () => {
-  return <footer>Footer</footer>;
-};
+import Image from "next/image";
+
+const Footer = () => (
+  <section className="flexStart footer">
+    <div className="flex flex-col gap-12 w-full">
+      <div className="flex items-start flex-col">
+        <Image src="/Dribbble-Logo.png" width={116} height={38} alt="logo" />
+
+        <p className="text-start text-sm font-normal mt-5 max-w-xs">
+          Dribble is a community for developers to share project, and get hired.
+        </p>
+      </div>
+    </div>
+  </section>
+);
 
 export default Footer;
