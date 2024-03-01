@@ -17,6 +17,11 @@ const Navbar = () => {
           ))}
         </ul>
       </div>
+      <div className="flexCenter gap-4">
+        <Link href="/create-project">
+          <button className='flexCenter gap-3 px-4 py-3'> Share project</button>
+        </Link>
+      </div>
     </nav>
   );
 };
