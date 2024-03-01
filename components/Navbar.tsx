@@ -1,8 +1,11 @@
 import Link from "next/link";
 import Image from "next/image";
 import { navLinks } from "@/constant/navLinks";
+import AuthProviders from "./AuthProviders";
+import { getCurrentUser } from "@/app/api/auth/[...nextauth]/route";
 
-const Navbar = () => {
+const Navbar = async () => {
+  const session = await getCurrentUser()
   return (
     <nav className="flexBetween navbar">
       <div className="flex-1 flexStart gap-10">
@@ -18,9 +21,17 @@ const Navbar = () => {
         </ul>
       </div>
       <div className="flexCenter gap-4">
-        <Link href="/create-project">
-          <button className='flexCenter gap-3 px-4 py-3'> Share project</button>
-        </Link>
+        {session?.user ?  (
+          <>
+            <Link href="/create-project">
+              <button className="flexCenter gap-3 px-4 py-3">
+                Share project
+              </button>
+            </Link>
+          </>
+        ) : (
+          <AuthProviders />
+        )}
       </div>
     </nav>
   );
